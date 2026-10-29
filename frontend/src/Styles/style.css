@@ -1,0 +1,134 @@
+.navbar {
+  border: black solid 2px;
+  background: red;
+  height: 100vh;
+  width: 10%;
+  position: fixed;
+  top: 0;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  .navbar {
+    width: 100%;
+    margin-left: 0;
+    left: 0;
+    top: 0;
+    height: 10%;
+  }
+}
+
+.menu-item {
+  align-items: start;
+  justify-items: center;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+@media (max-width: 768px) {
+  .menu-item {
+    margin-top: 0;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.menu-item > a {
+  margin-top: 30px;
+  text-decoration: none;
+  color: blue;
+}
+@media (max-width: 768px) {
+  .menu-item > a {
+    margin-top: 0;
+  }
+}
+
+.hamburger {
+  position: fixed;
+  z-index: 999;
+}
+
+.top_bar {
+  background: green;
+  border: black solid 2px;
+  height: 10%;
+  min-height: 125px;
+  width: 90%;
+  position: fixed;
+  top: 0;
+  margin-left: 10%;
+  box-sizing: border-box;
+  z-index: 10;
+}
+.top_bar.active {
+  width: 100%;
+  margin-left: 0;
+}
+@media (max-width: 768px) {
+  .top_bar {
+    width: 100%;
+    margin-left: 0;
+    left: 0;
+    top: 70px;
+  }
+  .top_bar.active {
+    top: 0;
+  }
+}
+
+.container {
+  background: black;
+  border: black solid 2px;
+  width: 90%;
+  height: 90%;
+  margin-left: 10%;
+  top: 125px;
+  position: fixed;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  align-items: start;
+  justify-items: center;
+  box-sizing: border-box;
+  overflow-y: auto;
+  padding-bottom: 20px;
+}
+.container.active {
+  width: 100%;
+  margin-left: 0;
+}
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    margin-left: 0;
+    top: 195px;
+    left: 0;
+    height: 80vh;
+  }
+  .container.active {
+    top: 125px;
+    height: 90vh;
+  }
+}
+
+p {
+  width: fit-content;
+  max-width: 40%;
+  font-size: 1rem;
+  background: white;
+  height: fit-content;
+  border: gray solid 2px;
+}
+@media (max-width: 768px) {
+  p {
+    max-width: 90%;
+    margin: 10px 0;
+  }
+}
+
+h1 {
+  color: aliceblue;
+}
+
+/*# sourceMappingURL=style.css.map */
