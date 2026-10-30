@@ -7,3 +7,19 @@ $breakpoints: (
         "medium": $mobile,
         "large": $tablet,
 );
+
+$light-theme: (
+        bg-color: #ffffff,
+        text-color: #333333,
+        menu-color: #958686,
+        navbar-color: #6B6B6B,
+        item-color: #FFB6B6,
+);
+
+$dark-theme: (
+        bg-color: #1a1a1a,
+        text-color: #f9f9f9,
+        menu-color: #525252,
+        navbar-color: #666666,
+        item-color:  #523B3B,
+);

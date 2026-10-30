@@ -1,0 +1,13 @@
+@use "variable" as *;
+
+:root {
+  @each $key, $value in $light-theme {
+    --#{$key}: #{$value};
+  }
+}
+
+[data-theme="dark"] {
+  @each $key, $value in $dark-theme {
+    --#{$key}: #{$value};
+  }
+}

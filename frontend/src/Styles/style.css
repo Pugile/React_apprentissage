@@ -1,6 +1,22 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --menu-color: #958686;
+  --navbar-color: #6B6B6B;
+  --item-color: #FFB6B6;
+}
+
+[data-theme=dark] {
+  --bg-color: #1a1a1a;
+  --text-color: #f9f9f9;
+  --menu-color: #525252;
+  --navbar-color: #666666;
+  --item-color: #523B3B;
+}
+
 .navbar {
   border: black solid 2px;
-  background: red;
+  background: var(--navbar-color);
   height: 100vh;
   width: 10%;
   position: fixed;
@@ -37,7 +53,7 @@
 .menu-item > a {
   margin-top: 30px;
   text-decoration: none;
-  color: blue;
+  color: var(--text-color);
 }
 @media (max-width: 768px) {
   .menu-item > a {
@@ -51,15 +67,18 @@
 }
 
 .top_bar {
-  background: green;
+  background: var(--menu-color);
   border: black solid 2px;
   height: 10%;
   min-height: 125px;
   width: 90%;
   position: fixed;
   top: 0;
+  display: grid;
+  justify-self: right;
   margin-left: 10%;
   box-sizing: border-box;
+  grid-template-columns: 1fr auto;
   z-index: 10;
 }
 .top_bar.active {
@@ -79,7 +98,7 @@
 }
 
 .container {
-  background: black;
+  background: var(--bg-color);
   border: black solid 2px;
   width: 90%;
   height: 90%;
@@ -116,7 +135,7 @@ p {
   width: fit-content;
   max-width: 40%;
   font-size: 1rem;
-  background: white;
+  background: var(--item-color);
   height: fit-content;
   border: gray solid 2px;
 }
@@ -127,8 +146,20 @@ p {
   }
 }
 
+.theme-button {
+  padding: 10px 20px;
+  cursor: pointer;
+  background: var(--btn-bg);
+  color: var(--text-color);
+  font-size: 20px;
+  justify-self: end;
+  align-self: center;
+  margin-right: 20px;
+  z-index: 11;
+}
+
 h1 {
-  color: aliceblue;
+  color: var(--text-color);
 }
 
 /*# sourceMappingURL=style.css.map */
