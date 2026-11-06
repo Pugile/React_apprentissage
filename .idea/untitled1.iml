@@ -176,6 +176,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php86" />
       <excludeFolder url="file://$MODULE_DIR$/Fast_API/.venv/bin" />
       <excludeFolder url="file://$MODULE_DIR$/Fast_API/.venv/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/http-client-contracts" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
