@@ -1,7 +1,10 @@
+from datetime import datetime, timezone
+from typing import List
+
 from fastapi import FastAPI, HTTPException
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel
-from typing import List
+from pymongo import ReturnDocument
 
 app = FastAPI()
 MONGO_URL = "mongodb://localhost:27017"
@@ -27,7 +30,7 @@ async def get_user(username: str):
     return user_doc
 
 @app.post("/api/users/sync")
-async def sync_user(user: UserSyncSchema):
+async def sync_user(user: UserSchema):
     now = datetime.now(timezone.utc)
     user_doc = await users_collection.find_one_and_update(
         {"username": user.username},
