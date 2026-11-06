@@ -5,8 +5,18 @@ from fastapi import FastAPI, HTTPException
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel
 from pymongo import ReturnDocument
+import jwt
+from fastapi import Depends, FastAPI, HTTPException, Security
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+JWT_SECRET = os.getenv("JWT_SECRET")
 
 app = FastAPI()
+security = HTTPBearer()
 MONGO_URL = "mongodb://localhost:27017"
 client = AsyncIOMotorClient(MONGO_URL)
 db = client["React"]
@@ -14,6 +24,18 @@ users_collection = db["User"]
 class UserSchema(BaseModel):
     username: str
     roles: List[str]
+
+async def verify_jwt(
+    credentials: HTTPAuthorizationCredentials = Security(security),
+):
+  token = credentials.credentials
+  try:
+    payload = jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
+    return payload
+  except jwt.ExpiredSignatureError:
+    raise HTTPException(status_code=401, detail="Token expiré")
+  except jwt.PyJWTError:
+    raise HTTPException(status_code=401, detail="Token invalide")
 
 @app.post("/users", status_code=201)
 async def create_user(user: UserSchema):
@@ -30,7 +52,10 @@ async def get_user(username: str):
     return user_doc
 
 @app.post("/api/users/sync")
-async def sync_user(user: UserSchema):
+async def sync_user(
+    user: UserSchema,
+    current_token_payload: dict = Depends(verify_jwt),
+):
     now = datetime.now(timezone.utc)
     user_doc = await users_collection.find_one_and_update(
         {"username": user.username},
